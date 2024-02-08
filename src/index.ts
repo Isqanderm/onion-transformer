@@ -1,5 +1,4 @@
 import * as ts from "typescript";
-import type { TransformerExtras, PluginConfig } from "ts-patch";
 import { addFieldToDecoratorArgument } from "./utils/addFieldToDecoratorArgument";
 import { extractDecoratorName } from "./utils/extractDecoratorName";
 
@@ -13,7 +12,7 @@ const requireDecorators = [
 const injectClass = "Inject";
 
 const transformers = [
-  (program: ts.Program, tsInstance: typeof ts) =>
+  (program: ts.Program) =>
     (context: ts.TransformationContext) => {
       const { factory } = context;
       return (source: ts.SourceFile): ts.SourceFile => {
@@ -62,12 +61,10 @@ const transformers = [
 
 export default function transformer(
   program: ts.Program,
-  pluginConfig: PluginConfig,
-  { ts: tsInstance }: TransformerExtras,
 ): ts.TransformerFactory<ts.SourceFile> {
   return (context) => {
     const initializedTransformers = transformers.map((transformer) =>
-      transformer(program, tsInstance)(context),
+      transformer(program)(context),
     );
 
     return (sourceFile) => {

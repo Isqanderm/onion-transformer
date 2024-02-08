@@ -1,0 +1,16 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "transformed",
+    "experimentalDecorators": true,
+    "target": "es5",
+    "lib": ["es6"],
+    "plugins": [
+      {
+        "transform": "../src/index.ts"
+      }
+    ]
+  },
+  "include": [],
+  "files": ["source.ts"]
+}
