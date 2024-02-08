@@ -1,6 +1,6 @@
 {
-  "name": "@onion/transformer",
-  "version": "0.0.1",
+  "name": "onion-transformer",
+  "version": "0.1.0",
   "description": "Transformer for Onion package",
   "keywords": [
     "onion",
@@ -22,6 +22,7 @@
     "build": "tsc",
     "build:watch": "tsc --watch",
     "pre:publish": "rm -rf build && npm run build",
+    "publish": "npm run pre:publish && npm publish --access public",
     "example": "cd example && tsc"
   },
   "author": "Isqanderm <aleksandr.melnik.personal@gmail.com> (https://www.linkedin.com/in/isqander-melnik)",
