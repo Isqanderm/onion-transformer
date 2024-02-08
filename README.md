@@ -63,7 +63,7 @@ class MyEntity {
 ## Development
 For local development and testing:
 
-git clone https://github.com/Isqanderm/onion-transformer.git
-cd transformer
-npm install
-npm run example
+- git clone https://github.com/Isqanderm/onion-transformer.git
+- cd transformer
+- npm install
+- npm run example
