@@ -1,0 +1,22 @@
+{
+  "name": "@onion/transformer",
+  "version": "0.0.1",
+  "description": "Transformer for Onion package",
+  "main": "build/index.js",
+  "bugs": {
+    "url": "https://github.com/Isqanderm/onion/issues"
+  },
+  "homepage": "https://github.com/Isqanderm/onion#readme",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch"
+  },
+  "author": "Isqanderm <aleksandr.melnik.personal@gmail.com> (https://www.linkedin.com/in/isqander-melnik)",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "ts-patch": "^3.1.2",
+    "typescript": "^5.3.2"
+  }
+}
