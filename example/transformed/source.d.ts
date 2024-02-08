@@ -1,4 +1,4 @@
-declare function Entity(): (target: Function) => void;
+declare function Service(): (target: Function) => void;
 declare function Inject(): (target: Object, propertyKey?: string | symbol, parameterIndex?: number) => void;
 declare class MyService {
 }

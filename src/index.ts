@@ -4,7 +4,6 @@ import { extractDecoratorName } from "./utils/extractDecoratorName";
 
 const requireDecorators = [
   "Application",
-  "Entity",
   "Infrastructure",
   "Repository",
   "Service",

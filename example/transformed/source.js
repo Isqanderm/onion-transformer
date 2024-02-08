@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-function Entity() {
+function Service() {
     return function (target) { };
 }
 function Inject() {
@@ -24,7 +24,7 @@ var MyEntity = /** @class */ (function () {
         this.myService = myService;
     }
     MyEntity = __decorate([
-        Entity({ name: "MyEntity" }),
+        Service({ name: "MyEntity" }),
         __param(0, Inject({ name: "MyService" }))
     ], MyEntity);
     return MyEntity;

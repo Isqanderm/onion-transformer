@@ -1,4 +1,4 @@
-function Entity() {
+function Service() {
   return function (target: Function) {}
 }
 
@@ -8,7 +8,7 @@ function Inject() {
 
 class MyService {}
 
-@Entity()
+@Service()
 class MyEntity {
   constructor(@Inject() private myService: MyService) {}
 }

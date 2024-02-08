@@ -1,6 +1,6 @@
-# @onion/transformer
+# onion-transformer
 
-`@onion/transformer` is a TypeScript transformer designed to simplify Dependency Injection (DI) in the Onion architecture. It automatically transforms TypeScript code to make dependency injections simpler and less error-prone.
+`onion-transformer` is a TypeScript transformer designed to simplify Dependency Injection (DI) in the Onion architecture. It automatically transforms TypeScript code to make dependency injections simpler and less error-prone.
 
 ## Features
 
@@ -10,14 +10,14 @@
 
 ## Installation
 
-Install `@onion/transformer` using npm or yarn:
+Install `onion-transformer` using npm or yarn:
 
 ```bash
-npm install @onion/transformer --save-dev
+npm install onion-transformer --save-dev
 
 # or
 
-yarn add @onion/transformer --dev
+yarn add onion-transformer --dev
 ```
 
 ```bash
@@ -28,14 +28,14 @@ This step modifies the TypeScript compiler to support custom transformers.
 
 ## Usage
 
-To use @onion/transformer in your project, add it to your TypeScript configuration (usually tsconfig.json) under compilerOptions.plugins:
+To use onion-transformer in your project, add it to your TypeScript configuration (usually tsconfig.json) under compilerOptions.plugins:
 
 ```json
 {
   "compilerOptions": {
     "plugins": [
       {
-        "transform": "@onion/transformer"
+        "transform": "onion-transformer"
       }
     ]
   }
@@ -46,7 +46,7 @@ To use @onion/transformer in your project, add it to your TypeScript configurati
 
 ### Before Transformation
 ```ts
-@Entity()
+@Service()
 class MyEntity {
   constructor(@Inject() private myService: MyService) {}
 }
@@ -54,7 +54,7 @@ class MyEntity {
 
 ### After Transformation
 ```ts
-@Entity({ name: "MyEntity" })
+@Service({ name: "MyEntity" })
 class MyEntity {
   constructor(@Inject({ name: "MyService" }) private myService: MyService) {}
 }
@@ -63,7 +63,7 @@ class MyEntity {
 ## Development
 For local development and testing:
 
-git clone https://example.com/onion/transformer.git
+git clone https://github.com/Isqanderm/onion-transformer.git
 cd transformer
 npm install
 npm run example
