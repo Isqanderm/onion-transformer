@@ -8,25 +8,38 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-function Service() {
+function Service(params) {
     return function (target) { };
 }
-function Inject() {
+function Inject(params) {
     return function (target, propertyKey, parameterIndex) { };
 }
 var MyService = /** @class */ (function () {
     function MyService() {
     }
+    MyService = __decorate([
+        Service({ name: "MyService" })
+    ], MyService);
     return MyService;
 }());
-var MyEntity = /** @class */ (function () {
-    function MyEntity(myService) {
+var MyOtherService = /** @class */ (function () {
+    function MyOtherService(myService) {
         this.myService = myService;
     }
-    MyEntity = __decorate([
-        Service({ name: "MyEntity" }),
+    MyOtherService = __decorate([
+        Service({ name: "MyOtherService" }),
         __param(0, Inject({ name: "MyService" }))
-    ], MyEntity);
-    return MyEntity;
+    ], MyOtherService);
+    return MyOtherService;
+}());
+var MyThirdServiceWithWrongInjectType = /** @class */ (function () {
+    function MyThirdServiceWithWrongInjectType(myService) {
+        this.myService = myService;
+    }
+    MyThirdServiceWithWrongInjectType = __decorate([
+        Service({ name: "MyThirdServiceWithWrongInjectType" }),
+        __param(0, Inject({ name: "MyService" }))
+    ], MyThirdServiceWithWrongInjectType);
+    return MyThirdServiceWithWrongInjectType;
 }());
 //# sourceMappingURL=source.js.map

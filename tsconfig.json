@@ -1,15 +1,15 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "lib": ["es6"],
     "module": "commonjs",
     "moduleResolution": "node",
-    "types": [],
+    "types": ["node"],
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
     "outDir": "./build",
-     "isolatedModules": true,
+    "isolatedModules": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -17,7 +17,5 @@
     "plugins": [],
     "strictNullChecks": true
   },
-  "include": [
-    "src/**/*"
-  ]
+  "include": ["src/**/*"]
 }
