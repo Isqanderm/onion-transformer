@@ -67,8 +67,8 @@ export const decoratorTransformer =
                       const errorMessage = `${sourceFile.fileName}:${line + 1}:${character + 1}: ${message}`;
                       const diagnostic: ts.DiagnosticWithLocation = {
                         category: ts.DiagnosticCategory.Error,
-                        code: 666,
-                        file: parameter.getSourceFile(),
+                        code: 100001,
+                        file: sourceFile.getSourceFile(),
                         start: parameter.getStart(),
                         length: parameter.getWidth(),
                         messageText: errorMessage,
