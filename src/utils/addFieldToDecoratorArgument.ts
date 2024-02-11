@@ -4,7 +4,7 @@ export function addFieldToDecoratorArgument(
   decorator: ts.Decorator,
   fieldName: string,
   fieldValue: string,
-): ts.Decorator {
+): ts.Decorator | ts.ModifierLike {
   if (!fieldValue || !fieldName) {
     return decorator;
   }
@@ -21,15 +21,15 @@ export function addFieldToDecoratorArgument(
 
       if (firstArgument && ts.isObjectLiteralExpression(firstArgument)) {
         const params: any[] = [];
-        let hasName = false;
+        let hasField = false;
         (firstArgument as ts.Expression).forEachChild((child) => {
-          if (child.getText().startsWith('name:')) {
-            hasName = true;
+          if (child.getText().startsWith(`${fieldName}:`)) {
+            hasField = true;
           }
           params.push(child);
         });
 
-        if (!hasName) {
+        if (!hasField) {
           const objectLiteral = ts.factory.createObjectLiteralExpression([
             ...params,
             ts.factory.createPropertyAssignment(
@@ -67,5 +67,5 @@ export function addFieldToDecoratorArgument(
     }
   });
 
-  return newDecorator;
+  return newDecorator
 }
