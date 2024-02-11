@@ -22,7 +22,7 @@
     "build": "tsc",
     "build:watch": "tsc --watch",
     "clean": "rm -rf build",
-    "prepublishOnly": "npm run clean && npm run build && npm publish"
+    "prepublishOnly": "npm run clean && npm run build"
   },
   "author": "Isqanderm <aleksandr.melnik.personal@gmail.com> (https://www.linkedin.com/in/isqander-melnik)",
   "license": "MIT",

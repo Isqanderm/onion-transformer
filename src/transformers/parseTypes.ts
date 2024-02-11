@@ -25,6 +25,7 @@ export const parseTypes =
     const collectDecoratorTypes = actionByPredicate<ts.ClassDeclaration>(
       classDeclaration,
       (classNode) => {
+        // @ts-ignore
         ts.visitNodes<ts.ModifierLike>(classNode.modifiers, (modifier) => {
           if (!isIncludeDecorators(modifier)) {
             return modifier;

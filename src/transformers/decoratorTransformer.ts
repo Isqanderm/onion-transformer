@@ -45,6 +45,7 @@ export const decoratorTransformer =
         classNode.parameters = ts.visitNodes<ts.ParameterDeclaration>(
           classNode.parameters,
           (parameter) => {
+            // @ts-ignore
             parameter.modifiers = ts.visitNodes<ts.ModifierLike>(
               parameter.modifiers,
               (modifier) => {
