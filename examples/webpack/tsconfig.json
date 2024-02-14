@@ -3,13 +3,10 @@
   "compilerOptions": {
     "outDir": "transformed",
     "experimentalDecorators": true,
+    "declaration": false,
+    "declarationMap": false,
     "target": "es5",
-    "lib": ["es6"],
-    "plugins": [
-      {
-        "transform": "../../src"
-      },
-    ]
+    "lib": ["es6"]
   },
   "include": ["src"],
   "exclude": ["node_modules"]

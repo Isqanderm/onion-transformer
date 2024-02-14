@@ -17,9 +17,10 @@ const runContext: RunContext = {
 export default function transformer(
   program: ts.Program,
   pluginConfig: ts.PluginConfig,
-  extras: ts.ProgramTransformerExtras,
+  extras: ts.ProgramTransformerExtras & ts.TransformerExtras,
 ) {
-  return (context: ts.TransformationContext) => {
+  return (context: ts.TransformationContext & ts.TransformerExtras) => {
+    const addDiagnostic = extras.addDiagnostic || context.addDiagnostic;
     return (sourceFile: ts.SourceFile) => {
       function visit(node: ts.Node): ts.Node {
         if (extras.ts.isDecorator(node) && isIncludeDecorators(node)) {
@@ -76,7 +77,7 @@ export default function transformer(
                         const errorMessage = `${sourceFile.fileName}:${line + 1}:${character + 1}: ${message}`;
                         const diagnostic: ts.DiagnosticWithLocation = {
                           category: ts.DiagnosticCategory.Error,
-                          code: 100001,
+                          code: 2552,
                           file: sourceFile.getSourceFile(),
                           start: parameter.getStart(),
                           length: parameter.getWidth(),
@@ -133,7 +134,7 @@ export default function transformer(
             containerNotation?.type &&
             containerNotation?.type !== injectNotation.type
           ) {
-            (extras as any as ts.TransformerExtras).addDiagnostic(
+            addDiagnostic(
               injectNotation.diagnostic,
             );
           }
