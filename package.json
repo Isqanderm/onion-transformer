@@ -38,8 +38,5 @@
   },
   "peerDependencies": {
     "ts-patch": "^3.1.2"
-  },
-  "dependencies": {
-    "ast-query": "^2.0.0"
   }
 }
