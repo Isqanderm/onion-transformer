@@ -23,11 +23,11 @@ export default function transformer(
     const addDiagnostic = extras.addDiagnostic || context.addDiagnostic;
     return (sourceFile: ts.SourceFile) => {
       function visit(node: ts.Node): ts.Node {
-        if (extras.ts.isDecorator(node) && isIncludeDecorators(node)) {
+        if (ts.isDecorator(node) && isIncludeDecorators(node)) {
           let className: string | null = null;
 
           node.parent.forEachChild((child) => {
-            if (extras.ts.isIdentifier(child)) {
+            if (ts.isIdentifier(child)) {
               className = child.text;
             }
           });
@@ -48,9 +48,9 @@ export default function transformer(
             });
 
             node.parent.forEachChild((child) => {
-              if (extras.ts.isConstructorDeclaration(child)) {
+              if (ts.isConstructorDeclaration(child)) {
                 child.forEachChild((parameter) => {
-                  if (extras.ts.isParameter(parameter)) {
+                  if (ts.isParameter(parameter)) {
                     parameter.forEachChild((modifier) => {
                       if (!isInjectDecorator(modifier as ts.ModifierLike)) {
                         return;
@@ -69,19 +69,14 @@ export default function transformer(
                         ) as InjectDecoratorTypes;
                         const dependency = [];
                         const sourceFile = node.getSourceFile();
-                        const { line, character } =
-                          sourceFile.getLineAndCharacterOfPosition(
-                            modifier.getStart(),
-                          );
                         const message = `Dependency with the key "${injectNameValue}" and type "${injectType}" does not match the type in the dependency container.`;
-                        const errorMessage = `${sourceFile.fileName}:${line + 1}:${character + 1}: ${message}`;
                         const diagnostic: ts.DiagnosticWithLocation = {
                           category: ts.DiagnosticCategory.Error,
-                          code: 2552,
-                          file: sourceFile.getSourceFile(),
+                          code: "(onion)" as any,
+                          file: sourceFile,
                           start: parameter.getStart(),
                           length: parameter.getWidth(),
-                          messageText: errorMessage,
+                          messageText: message,
                           source: "onion-transformer",
                         };
 
@@ -108,7 +103,7 @@ export default function transformer(
             );
           }
         }
-        if (extras.ts.isDecorator(node) && isInjectDecorator(node)) {
+        if (ts.isDecorator(node) && isInjectDecorator(node)) {
           let className = node.parent.name?.getText();
 
           if (className) {
@@ -120,13 +115,13 @@ export default function transformer(
           }
         }
 
-        return extras.ts.visitEachChild(node, visit, context);
+        return ts.visitEachChild(node, visit, context);
       }
 
-      const result = extras.ts.visitNode(sourceFile, visit);
+      const result = ts.visitNode(sourceFile, visit);
 
       const container = runContext.container;
-      runContext.dependency.forEach((dependency) => {
+      runContext.dependency.forEach((dependency, key) => {
         dependency.forEach((injectNotation) => {
           const containerNotation = container.get(injectNotation.name);
 
@@ -139,6 +134,8 @@ export default function transformer(
             );
           }
         });
+
+        runContext.dependency.delete(key);
       });
 
       return result;

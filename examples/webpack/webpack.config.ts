@@ -24,9 +24,9 @@ module.exports = {
         exclude: /node_modules/,
         options: {
           transpileOnly: false,
-          getCustomTransformers: (program: ts.Program) => ({
-            before: [transformer(program, null, { ts })],
-          }),
+          // getCustomTransformers: (program: ts.Program) => ({
+          //   before: [transformer(program, null, { ts })],
+          // }),
         },
       },
     ],

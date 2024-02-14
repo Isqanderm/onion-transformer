@@ -6,7 +6,12 @@
     "declaration": false,
     "declarationMap": false,
     "target": "es5",
-    "lib": ["es6"]
+    "lib": ["es6"],
+    "plugins": [
+      {
+        "transform": "../../src"
+      },
+    ]
   },
   "include": ["src"],
   "exclude": ["node_modules"]
