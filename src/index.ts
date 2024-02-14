@@ -102,8 +102,9 @@ export default function transformer(
             );
           }
         }
+
         if (ts.isDecorator(node) && isInjectDecorator(node)) {
-          let className = node.parent.name?.getText();
+          let className = (node.parent as ts.ParameterDeclaration)?.type?.getText()
 
           if (className) {
             return addFieldToDecoratorArgument(
@@ -126,7 +127,8 @@ export default function transformer(
 
           if (
             containerNotation?.type &&
-            containerNotation?.type !== injectNotation.type
+            containerNotation?.type !== injectNotation.type &&
+            !extras.diagnostics.length
           ) {
             extras.addDiagnostic(
               injectNotation.diagnostic,
