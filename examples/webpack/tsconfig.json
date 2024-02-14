@@ -9,7 +9,8 @@
     "lib": ["es6"],
     "plugins": [
       {
-        "transform": "../../src"
+        "transform": "../../src",
+        "before": true
       },
     ]
   },
