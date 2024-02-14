@@ -20,7 +20,6 @@ export default function transformer(
   extras: ts.ProgramTransformerExtras & ts.TransformerExtras,
 ) {
   return (context: ts.TransformationContext & ts.TransformerExtras) => {
-    const addDiagnostic = extras.addDiagnostic || context.addDiagnostic;
     return (sourceFile: ts.SourceFile) => {
       function visit(node: ts.Node): ts.Node {
         if (ts.isDecorator(node) && isIncludeDecorators(node)) {
@@ -129,7 +128,7 @@ export default function transformer(
             containerNotation?.type &&
             containerNotation?.type !== injectNotation.type
           ) {
-            addDiagnostic(
+            extras.addDiagnostic(
               injectNotation.diagnostic,
             );
           }
