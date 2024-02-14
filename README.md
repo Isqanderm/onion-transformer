@@ -43,27 +43,6 @@ To use onion-transformer in your project, add it to your TypeScript configuratio
 }
 ```
 
-## Use with Webpack:
-
-You can use custom transformer with ts-loader if you prefer control your environment: https://github.com/TypeStrong/ts-loader?tab=readme-ov-file#getcustomtransformers
-
-## Webpack example:
-
-```ts
-import onionTransformer from 'onion-transformer';
-
-...
-{
-    test: /\.tsx?$/,
-    loader: 'ts-loader',
-    options: {
-        ... // other loader's options
-        getCustomTransformers: () => ({ before: [onionTransformer] })
-    }
-},
-...     
-```
-
 ## Examples
 
 ### Before Transformation
