@@ -1,6 +1,7 @@
 import * as ts from "typescript";
 
-const regexp = /"([^"]*)"/;
+const regexp = /['"`](.+?)['"`]/;
+
 export function getDecoratorValueParam(
   decorator: ts.Decorator,
   fieldName: string,

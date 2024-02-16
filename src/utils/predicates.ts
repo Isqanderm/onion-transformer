@@ -9,7 +9,7 @@ export const constructorDeclaration = predicate<ts.ConstructorDeclaration>(
 );
 
 export const isInjectDecorator = predicate<ts.ModifierLike>((node) =>
-  node.getText().includes(injectClass),
+  node.getText().includes(`@${injectClass}`),
 );
 
 export const classDeclaration = predicate<ts.ClassDeclaration>((node) =>

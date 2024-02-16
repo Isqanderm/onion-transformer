@@ -127,8 +127,7 @@ export default function transformer(
 
           if (
             containerNotation?.type &&
-            containerNotation?.type !== injectNotation.type &&
-            !extras.diagnostics.length
+            containerNotation?.type !== injectNotation.type
           ) {
             extras.addDiagnostic(
               injectNotation.diagnostic,
