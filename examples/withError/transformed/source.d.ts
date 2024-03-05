@@ -12,6 +12,7 @@ declare class MyOtherService {
 }
 declare class MyThirdServiceWithWrongInjectType {
     private myService;
-    constructor(myService: MyOtherService);
+    private myService2;
+    constructor(myService: MyOtherService, myService2?: MyOtherService);
 }
 //# sourceMappingURL=source.d.ts.map

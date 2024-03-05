@@ -33,8 +33,9 @@ var MyOtherService = /** @class */ (function () {
     return MyOtherService;
 }());
 var MyThirdServiceWithWrongInjectType = /** @class */ (function () {
-    function MyThirdServiceWithWrongInjectType(myService) {
-        this.myService = myService;
+    function MyThirdServiceWithWrongInjectType(myService2) {
+        if (myService2 === void 0) { myService2 = new MyOtherService(); }
+        this.myService2 = myService2;
     }
     MyThirdServiceWithWrongInjectType = __decorate([
         Service({ name: "MyThirdServiceWithWrongInjectType" }),

@@ -28,7 +28,7 @@ var MyOtherService = /** @class */ (function () {
     }
     MyOtherService = __decorate([
         Service({ name: "MyOtherService" }),
-        __param(0, Inject({ name: "myService" }))
+        __param(0, Inject({ name: "MyService" }))
     ], MyOtherService);
     return MyOtherService;
 }());

@@ -24,7 +24,7 @@ export type NotationMetadata<N> = {
 
 export type DependenceNotationMetadata<N> = NotationMetadata<N> & {
   className: string;
-  diagnostic: ts.DiagnosticWithLocation,
-}
+  diagnostic: ts.DiagnosticWithLocation;
+};
 
 export type Callback<T> = (node: T) => T | void;

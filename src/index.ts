@@ -66,7 +66,7 @@ export default function transformer(
                         const notationName = extractDecoratorName(
                           modifier.getText(),
                         ) as InjectDecoratorTypes;
-                        const dependency = [];
+                        const dependency = runContext.dependency.get(className) || [];
                         const sourceFile = node.getSourceFile();
                         const message = `Dependency with the key "${injectNameValue}" and type "${injectType}" does not match the type in the dependency container.`;
                         const diagnostic: ts.DiagnosticWithLocation = {
@@ -84,7 +84,7 @@ export default function transformer(
                           type: injectType,
                           notation: notationName,
                           className: className,
-                          diagnostic
+                          diagnostic,
                         });
 
                         runContext.dependency.set(className, dependency);
